@@ -1,4 +1,4 @@
-package com.example.vidal.rememberhist;
+package com.example.vidal.rememberhistory;
 
 import java.io.File;
 import java.io.FileNotFoundException;

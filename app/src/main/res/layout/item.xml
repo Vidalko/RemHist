@@ -18,7 +18,7 @@
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceSmall"
             android:text="e"
-            android:id="@+id/textEvent"
+            android:id="@+id/textYear"
             android:layout_marginLeft="10dp"
             android:textColor="#111" />
 
@@ -27,7 +27,7 @@
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceSmall"
             android:text="sd"
-            android:id="@+id/textYear"
+            android:id="@+id/textEvent"
             android:layout_gravity="left"
             android:layout_marginLeft="10dp"
             android:layout_marginBottom="15dp"

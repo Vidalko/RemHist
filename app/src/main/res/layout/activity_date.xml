@@ -19,6 +19,6 @@
         android:gravity="center"
         android:onClick="onClick"
         android:background="#DDD"
-        android:text="Зазубрить"
+        android:text="Зазубрим даты"
          />
 </LinearLayout>

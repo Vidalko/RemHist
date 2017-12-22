@@ -1,4 +1,4 @@
-package com.example.vidal.rememberhist;
+package com.example.vidal.rememberhistory;
 
 /**
  * Created by Vidal on 02.10.2017.
@@ -20,14 +20,12 @@ public class AdapterMainData extends RecyclerView.Adapter<RecyclerView.ViewHolde
     List<DataMain> data= Collections.emptyList();
     DataMain current;
 
-    // create constructor to innitilize context and data sent from MainActivity
     public AdapterMainData(Context context, List<DataMain> data){
         this.context=context;
         inflater= LayoutInflater.from(context);
         this.data=data;
     }
 
-    // Inflate the layout when viewholder created
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view=inflater.inflate(R.layout.item, parent,false);
@@ -35,11 +33,9 @@ public class AdapterMainData extends RecyclerView.Adapter<RecyclerView.ViewHolde
         return holder;
     }
 
-    // Bind data
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
 
-        // Get current position of item in recyclerview to bind data and assign values from list
         MyHolder myHolder= (MyHolder) holder;
         current=data.get(position);
         myHolder.textEvent.setText(current.event);
@@ -48,7 +44,6 @@ public class AdapterMainData extends RecyclerView.Adapter<RecyclerView.ViewHolde
 
     }
 
-    // return total item from List
     @Override
     public int getItemCount() {
         return data.size();
@@ -60,7 +55,6 @@ public class AdapterMainData extends RecyclerView.Adapter<RecyclerView.ViewHolde
         TextView textEvent;
         TextView textYear;
 
-        // create constructor to get widget reference
         public MyHolder(View itemView) {
             super(itemView);
             textEvent= (TextView) itemView.findViewById(R.id.textEvent);

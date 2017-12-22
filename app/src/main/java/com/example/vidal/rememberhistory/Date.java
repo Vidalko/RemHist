@@ -1,11 +1,13 @@
-package com.example.vidal.rememberhist;
+package com.example.vidal.rememberhistory;
+
 /**
  * Created by Vidal on 02.10.2017.
  */
-import android.app.Activity;
+
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -15,15 +17,15 @@ import android.widget.Toast;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.DataFormatter;
 import org.apache.poi.ss.usermodel.Row;
-import org.apache.poi.xssf.usermodel.XSSFSheet;
-import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.apache.poi.hssf.usermodel.HSSFSheet;
+import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
 
-public class Date extends Activity {
+public class Date extends AppCompatActivity {
 
     AdapterDate mDateAdapter;
     private RecyclerView mDate;
@@ -44,32 +46,31 @@ public class Date extends Activity {
         int defaultValue = 0;
         Intent intent = getIntent();
         position = intent.getIntExtra("currentPosition", defaultValue);
-
         try {
             InputStream stream;
-            if(position == 0) {
+            if(position==0) {
                 stream = getResources().openRawResource(R.raw.date1);
             }
-            else if(position == 1)
+            else if(position==1)
                 stream = getResources().openRawResource(R.raw.date2);
-            else if(position == 2)
+            else if(position==2)
                 stream = getResources().openRawResource(R.raw.date3);
-            else if(position == 3)
+            else if(position==3)
                 stream = getResources().openRawResource(R.raw.date4);
-            else if(position == 4)
+            else if(position==4)
                 stream = getResources().openRawResource(R.raw.date5);
-            else if(position == 5)
+            else if(position==5)
                 stream = getResources().openRawResource(R.raw.date6);
-            else if(position == 6)
+            else if(position==6)
                 stream = getResources().openRawResource(R.raw.date7);
-            else if(position == 7)
+            else if(position==7)
                 stream = getResources().openRawResource(R.raw.date8);
-            else if(position == 8)
+            else if(position==8)
                 stream = getResources().openRawResource(R.raw.date9);
             else
                 stream = getResources().openRawResource(R.raw.date10);
-            XSSFWorkbook workbook = new XSSFWorkbook(stream);
-            XSSFSheet sheet = workbook.getSheetAt(0);
+            HSSFWorkbook workbook = new HSSFWorkbook(stream);
+            HSSFSheet sheet = workbook.getSheetAt(0);
             int rowsCount = sheet.getPhysicalNumberOfRows();
             List<DataDate> data = new ArrayList<DataDate>(rowsCount);
 
@@ -102,7 +103,6 @@ public class Date extends Activity {
                         //mDate.setBackgroundColor(Color.GREEN);
                         Toast.makeText(context,"Выбрано: " + dataToRem.get(position).event,Toast.LENGTH_SHORT).show();
                         check++;
-
                     }
 
                     @Override public void onLongItemClick(View view, int position) {
@@ -114,7 +114,6 @@ public class Date extends Activity {
     }
 
     public void onClick(View view){
-
 
             if(check != 0) {
                 ArrayList<String> yearList = new ArrayList<String>();
@@ -131,9 +130,12 @@ public class Date extends Activity {
                 intent.putStringArrayListExtra("Year", yearList);
                 intent.putStringArrayListExtra("Event", eventList);
                 startActivity(intent);
+                //dataFinish = null;
+                //mDate.setBackgroundColor(Color.GREEN);
+
+               // check = 0;
             }
             else
                 Toast.makeText(context,"Выберите даты",Toast.LENGTH_SHORT).show();
     }
-
 }
